@@ -22,7 +22,7 @@ const BookCards = () => {
         <Container>
             {
                 data.map(({id, title, author, genre,year }) => {
-                    return <BookItem key={id} title={title} author={author} genre={genre} year={year} />;
+                    return <BookItem id={id} title={title} author={author} genre={genre} year={year} />;
                 })
             }
         </Container>

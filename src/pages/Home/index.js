@@ -1,9 +1,8 @@
 import React from "react";
 import BooksCards from "./BookCards";
-//import Presentation from "./Presentation"
 import styled from "styled-components";
 
-const Index = () => {
+const Home = () => {
   return (
     <Container>
         <BooksCards/>
@@ -17,4 +16,4 @@ const Container = styled.div`
   justify-content: space-evenly;
 `;
 
-export default Index;
+export default Home;

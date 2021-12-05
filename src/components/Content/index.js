@@ -8,6 +8,7 @@ import {
   Connection,
   MyAccount,
 } from "../../pages";
+import BookDetails from "../../pages/BookDetails";
 
 const Content = ({ setUserToken }) => {
   return (
@@ -18,6 +19,7 @@ const Content = ({ setUserToken }) => {
         <Route path="/bookfind" exact element={<BookFind />} />
         <Route path="/bookpropose" exact element={<BookPropose />} />
         <Route path="/myaccount" exact element={<MyAccount/>} />
+        <Route path="/book/:id" exact element={<BookDetails/>}/>
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

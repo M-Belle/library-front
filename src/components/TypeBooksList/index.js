@@ -21,7 +21,6 @@ export default TypeBooksList;
 
 const Option = styled.option`
   width: auto;
-  //padding: auto;
   margin: 20px 20px 20px 20px;
   box-sizing: border-box;
   border: 2px solid rgb(31, 97, 141);

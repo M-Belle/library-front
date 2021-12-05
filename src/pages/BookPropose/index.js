@@ -1,94 +1,107 @@
-import React, {Component, useEffect} from "react";
+import React from "react";
 import styled from "styled-components";
 import TypeBooksList from "../../components/TypeBooksList";
 import axios from "axios";
 
-class BookPropose extends Component {
-    state = {
-      title: '',
-      author: '',
-      genre: '',
-      year: '',
-    };
+const BookPropose = () => {
+  const [title, setTitle] = React.useState("");
+  const [author, setAuthor] = React.useState("");
+  const [genre, setGenre] = React.useState("");
+  const [year, setYear] = React.useState("");
 
-  handleTitleChange = (event) => {
-    this.setState({
-      title: event.target.value
-    })
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value)
   };
 
-  handleAuthorChange = (event) => {
-    this.setState({
-      author: event.target.value
-    })
+  const handleAuthorChange = (event) => {
+    setAuthor(event.target.value)
   };
 
-  handleGenreChange = (event) => {
-    this.setState({
-      genre: event.target.value
-    })
+  const handleGenreChange = (event) => {
+    setGenre(event.target.value)
   };
 
-  handleYearChange = (event) => {
-    this.setState({
-      year: event.target.value
-    })
+  const handleYearChange = (event) => {
+    setYear(event.target.value)
   };
 
-  handleSubmit(event) {
+  const HandleSubmit = (event) => {
     event.preventDefault();
 
-    const book = {
-      title: this.state.title,
-      author: this.state.author,
-      genre: this.state.genre,
-      year: this.state.year,
-    }
+      const fetchData = async () => {
+        try {
+          await axios.post('http://localhost:3030/books/propose', {
+            title,
+            author,
+            genre,
+            year,
+          })
+          //console.log(resp.data);
+        } catch (err) {
+          throw new Error(err);
+        }
+      };
+      fetchData()
+  }
 
-    axios
-        .post(`http://localhost:3030/books/propose`, {book})
-        .then(res => {
-          console.log(res.data);
-        });
-  };
-
-  render() {
     return (
         <div>
-          <form onSubmit={this.handleSubmit}>
+          <h1>Proposer un livre</h1>
+          <Form onSubmit={HandleSubmit}>
             <Label>
-              Titre du Livre: <Input type="text" onChange={this.handleTitleChange}/>
+              Titre du Livre: <Input type="text" onChange={handleTitleChange}/>
             </Label>
             <Label>
-              Auteur du Livre <Input type="text" onChange={this.handleAuthorChange}/>
+              Auteur du Livre <Input type="text" onChange={handleAuthorChange}/>
             </Label>
             <Label>
-              Genre du Livre <TypeBooksList onChange={this.handleGenreChange}/>
+              Genre du Livre <TypeBooksList onChange={handleGenreChange}/>
             </Label>
             <Label>
-              Date <Input type="text" onChange={this.handleYearChange} />
+              Date <Input type="text" onChange={handleYearChange}/>
             </Label>
-            <button type="submit">Add</button>
-          </form>
+            <Button type="submit">Ajouter</Button>
+          </Form>
         </div>
     );
-  }
 }
 
 export default BookPropose;
 
+const Form = styled.form`
+  position: relative;
+  width  : 740px;
+  height : 498px;
+  margin : 0 auto;
+`;
+
 const Input = styled.input`
-  width: auto;
-  margin: 20px 20px 20px 20px;
+  width: 100%;
+  padding: 5px 20px;
+  margin: 8px 0;
   box-sizing: border-box;
   border: 2px solid rgb(31, 97, 141);
   border-radius: 8px;
 `;
 
 const Label = styled.label`
+  width: 100%;
+  padding: 10px 20px;
+  margin: 8px 0;
+  display: inline-block;
   font-size: 20px;
-  margin: 10px 10px 10px 10px;
   background-color: #5499c7;
   color: white;
   border-radius: 4px;
+  box-sizing: border-box;
+`;
+
+const Button = styled.button`
+  width: 100%;
+  background-color: #5499c7;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 15px 32px;
 `;

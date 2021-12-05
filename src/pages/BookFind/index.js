@@ -20,21 +20,27 @@ const BookFind = () => {
 
     return (
         <Container>
-            {
-                book.map(({id, title, author, genre, year}) => {
-                return <BookItem key={id} title={title} author={author} genre={genre} year={year}/>;
-                })
-            }
+            <h1>Liste des livres</h1>
+            <BookList>
+                {
+                    book.map(({id, title, author, genre, year}) => {
+                    return <BookItem id={id} title={title} author={author} genre={genre} year={year}/>;
+                    })
+                }
+            </BookList>
         </Container>
     )
 }
 export default BookFind;
 
 const Container = styled.div`
+`;
+
+const BookList = styled.div`
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
   margin-top: 24px;
 `;
 

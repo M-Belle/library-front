@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import AddToCart from "../AddToCart";
+import {Link} from "react-router-dom";
 
-const BookItem = ({ title, author, genre, year,img }) => {
+const BookItem = ({ id, title, author, genre, year,img }) => {
   const [isAdd, setIsAdd] = React.useState(true);
 
   const handleClick = () => {
@@ -10,14 +11,14 @@ const BookItem = ({ title, author, genre, year,img }) => {
   };
 
   return (
-    <ItemBook>
-      <img src={img} width='70%' height='100%' resizeMode='contain' alt="Couv. Livre" />
-      <TitleBook>Titre : {title}</TitleBook>
-      <DetailBook>Auteur : {author}</DetailBook>
-      <DetailBook>Genre : {genre}</DetailBook>
-      <DetailBook>Year : {year}</DetailBook>
-      <AddToCart clickFunction={handleClick} isAdd={isAdd} />
-    </ItemBook>
+      <ItemBook>
+          <img src={img} width='70%' height='100%' resizeMode='contain' alt="Couv. Livre" />
+          <Link to={`/book/${id}`}><TitleBook>{title}</TitleBook></Link>
+          <DetailBook>Auteur : {author}</DetailBook>
+          <DetailBook>Genre : {genre}</DetailBook>
+          <DetailBook>Year : {year}</DetailBook>
+          <AddToCart clickFunction={handleClick} isAdd={isAdd} />
+      </ItemBook>
   );
 };
 

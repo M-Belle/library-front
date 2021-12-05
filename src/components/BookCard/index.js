@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-
 const BookCard = ({ title, author, genre, year }) => {
     return (
         <Container>
