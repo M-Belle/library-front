@@ -1,19 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 
-const TypeBooksList = () => {
+const TypeBooksList = ({ setGenre }) => {
+
+  const handleGenreChange = (event) => {
+    setGenre(event.target.value)
+  };
+
   return (
-    <label>
-      <select>
-        <Option value="classic">Classique</Option>
-        <Option value="foreignLiterature">Littérature étrangère</Option>
-        <Option value="horror">Horreur</Option>
-        <Option value="childhood">Enfance</Option>
-        <Option value="crime">Policier</Option>
-        <Option value="fantastic">Fantastique</Option>
-        <Option value="sci-fi">Science-Fiction</Option>
+    <div>
+      <select id="dropdown" onChange={handleGenreChange}>
+        <Option value="Classique">Classique</Option>
+        <Option value="Littérature étrangère">Littérature étrangère</Option>
+        <Option value="Horreur">Horreur</Option>
+        <Option value="Enfance">Enfance</Option>
+        <Option value="Policier">Policier</Option>
+        <Option value="Fantastique">Fantastique</Option>
+        <Option value="Science-Fiction">Science-Fiction</Option>
       </select>
-    </label>
+    </div>
   );
 };
 

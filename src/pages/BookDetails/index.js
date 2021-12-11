@@ -34,6 +34,7 @@ export default BookDetails;
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 24px;
   flex-wrap: wrap;
   justify-content: center;

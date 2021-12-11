@@ -1,28 +1,28 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import {
   Home,
   BookFind,
   BookPropose,
   NotFound,
-  Connection,
+  SignIn,
   MyAccount,
+  BookDetails,
+  SignUp,
 } from "../../pages";
-import BookDetails from "../../pages/BookDetails";
 
-const Content = ({ setUserToken }) => {
+const Content = () => {
   return (
-    <BrowserRouter>
       <Routes>
-        <Route path="/" exact element={<Home />} />
-        <Route path="/connect" exact element={<Connection setUserToken={setUserToken} />}/>
-        <Route path="/bookfind" exact element={<BookFind />} />
-        <Route path="/bookpropose" exact element={<BookPropose />} />
-        <Route path="/myaccount" exact element={<MyAccount/>} />
-        <Route path="/book/:id" exact element={<BookDetails/>}/>
+        <Route exact path="/" element={<Home/>}/>
+        <Route exact path="/signin"  element={<SignIn />}/>
+        <Route exact path="/signup" element={<SignUp />}/>
+        <Route exact path="/book"  element={<BookFind />} />
+        <Route exact path="/bookpropose"  element={<BookPropose />} />
+        <Route exact path="/book/:id"  element={<BookDetails/>}/>
+        <Route exact path="/user/:id"  element={<MyAccount/>}/>
         <Route path="/*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
   );
 };
 

@@ -19,4 +19,5 @@ const ButtonStyle = styled.button`
   color: #fff;
   border-radius: 10px;
   background-color: #5499c7;
+  display: block;
 `;

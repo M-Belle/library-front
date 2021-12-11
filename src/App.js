@@ -1,14 +1,16 @@
 import React from "react";
 import { Content, Footer, Header } from "./components";
+import {BrowserRouter} from "react-router-dom";
 
 const App = () => {
-  const [userToken, setUserToken] = React.useState("");
 
   return (
     <div className="appRoot">
-      <Header userToken={userToken} />
-      <Content setUserToken={setUserToken} />
-      <Footer />
+        <BrowserRouter>
+            <Header />
+            <Content />
+            <Footer/>
+        </BrowserRouter>
     </div>
   );
 };

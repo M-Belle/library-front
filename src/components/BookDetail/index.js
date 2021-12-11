@@ -11,11 +11,18 @@ const BookDetail = ({ title, author, genre, year, resume, img }) => {
 
     return (
         <ItemBook>
-            <img src={img} width='70%' height='100%' resizeMode='contain' alt="Couv. Livre" />
-            <TitleBook>{title}</TitleBook>
-            <DetailBook>Auteur : {author}</DetailBook>
-            <DetailBook>Genre : {genre}</DetailBook>
-            <DetailBook>Year : {year}</DetailBook>
+            <ImageBook>
+                <img src={img} width='70%' height='100%' resizeMode='contain' alt="Couv. Livre" />
+            </ImageBook>
+            <DescriptionBook>
+                <TitleBook>{title}</TitleBook>
+                <DetailBook>Auteur : {author}</DetailBook>
+                <DetailBook>Genre : {genre}</DetailBook>
+                <DetailBook>Année : {year}</DetailBook>
+            </DescriptionBook>
+            <Resume>
+                <DetailBook>Résumé: {resume}</DetailBook>
+            </Resume>
             <AddToCart clickFunction={handleClick} isAdd={isAdd} />
         </ItemBook>
     );
@@ -23,25 +30,58 @@ const BookDetail = ({ title, author, genre, year, resume, img }) => {
 
 export default BookDetail;
 
-const TitleBook = styled.div`
-  color: #1a5276;
-  font-weight: bold;
-  text-align: center;
+const ImageBook = styled.div`
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  box-sizing: border-box;
+  width: 25%;
+  float: left;
+  /*& > img {
+    min-height: 180px;
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+    align-self: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }*/
 `;
 
-const DetailBook = styled.div`
+const DescriptionBook = styled.div`
+  width: 50%;
+  float: left;
+  position: relative;
+  box-sizing: border-box;
+`;
+
+const Resume = styled.div`
+  float: left;
+  position: relative;
+  box-sizing: border-box;
+`;
+
+const TitleBook = styled.h1`
   color: #1a5276;
-  text-align: center;
+  float: left;
+  position: relative;
+  box-sizing: border-box;
+`;
+
+const DetailBook = styled.p`
+  color: #1a5276;
+  float: left;
+  position: relative;
+  box-sizing: border-box;
 `;
 
 const ItemBook = styled.div`
-  padding: 20px;
-  display: flex;
-  align-items: safe center;
-  justify-content: center;
-  flex-direction: column;
-  width: 280px;
-  height: 250px;
-  border: 4px solid #2471a3;
-  border-radius: 20px;
+  width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
 `;
