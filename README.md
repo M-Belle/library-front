@@ -44,7 +44,12 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ## Versioning
 
 **Dernière version stable :** 1.0
-Liste des versions : [Cliquer pour afficher](https://github.com/MissMug/estiam-dfs-belle_faure-app)
+
+Liste des versions : [Cliquer pour afficher](https://github.com/M-Belle/library-front)
+
+Alice avait commencée la partie Front puis Maxence l'as repris pour intégrer Axios et faire le lien avec le Back.
+Voici la capture des commits d'Alice : 
+![img_1.png](img.png)
 
 ## Authors
 
