@@ -1,8 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const SignUp = () => {
+    const navigate = useNavigate();
+
     const [name, setName] = React.useState("");
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
@@ -27,7 +30,9 @@ const SignUp = () => {
             email,
             password,
         }).then((response) => {
-            alert(response.data)
+            alert(response.data);
+            navigate('/signin', { replace: true })
+            window.location.reload(true);
         }).catch((error) => {
             alert(error.response.data.message)
         });
@@ -92,4 +97,9 @@ const ConnexionButton = styled.button`
   font-size: 15px;
   color: white;
   display: block;
+  &:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #5499c7;
+  }
 `;

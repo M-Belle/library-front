@@ -8,15 +8,14 @@ const BookFind = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const resp = await axios.get('http://localhost:3030/books')
-                setBook(resp.data);
-                console.log(resp.data)
-            } catch (err) {
-                throw new Error(err);
-            }
+            await axios.get('http://localhost:3030/books')
+                .then((response) => {
+                    setBook(response.data);
+                }).catch((err) => {
+                    throw new Error(err);
+                })
         };
-        fetchData()
+        fetchData();
     }, []);
 
     return (
@@ -24,8 +23,8 @@ const BookFind = () => {
             <h1>Liste des livres</h1>
             <BookList>
                 {
-                    book.map(({id, title, author, genre, year}) => {
-                    return <BookItem id={id} title={title} author={author} genre={genre} year={year}/>;
+                    book.map(({id, title, author, genre, year, image}) => {
+                    return <BookItem id={id} title={title} author={author} genre={genre} year={year} img={image}/>;
                     })
                 }
             </BookList>

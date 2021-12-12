@@ -41,6 +41,7 @@ const Connection = () => {
 
 const logOutHandler = () => {
     localStorage.removeItem("userId");
+    window.location.reload(true);
 }
 
 const Header = () => {
@@ -57,11 +58,11 @@ const LogMenu = styled.button`
   background-color: #eaf2f8;
   border: 1px solid #2980b9;
   border-radius: 5px;
-  justify-content: center;
   margin: auto;
   padding: 10px;
   display: flex;
-  width: fit-content;
+  width: 250px;
+  justify-content: space-between;
 `;
 
 const ConnexionButton = styled.button`

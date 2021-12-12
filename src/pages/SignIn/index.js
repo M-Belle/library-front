@@ -1,21 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 
 const SignIn = () => {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+    const navigate = useNavigate();
 
-  const handleEmailChange = (event) => {
+    const [email, setEmail] = React.useState("");
+    const [password, setPassword] = React.useState("");
+
+    const handleEmailChange = (event) => {
     setEmail(event.target.value);
-  };
+    };
 
-  const handlePasswordChange = (event) => {
+    const handlePasswordChange = (event) => {
     setPassword(event.target.value);
-  };
+    };
 
-  const handleSubmit = (event) => {
+    const handleSubmit = (event) => {
     event.preventDefault();
 
     axios.post('http://localhost:3030/user/auth', {
@@ -25,6 +28,8 @@ const SignIn = () => {
             if (response.data.token) {
                 localStorage.setItem("userId", response.data.id);
             }
+            navigate('/', { replace: true })
+            window.location.reload(true);
         }).catch((error) => {
             alert(error.response.data.message);
     });
@@ -84,4 +89,9 @@ const ConnexionButton = styled.button`
   font-size: 15px;
   color: white;
   display: block;
+  &:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #5499c7;
+  }
 `;

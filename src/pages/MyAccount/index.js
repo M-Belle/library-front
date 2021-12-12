@@ -11,22 +11,23 @@ const MyAccount = () => {
 
     useEffect( () => {
         const fetchData = async () => {
-            await axios.get(`http://localhost:3030/user/${id}`).then((response) => {
-                setUser(response.data)
-            }).catch((err) => {
-                throw new Error(err);
-            })
+            await axios.get(`http://localhost:3030/user/${id}`)
+                .then((response) => {
+                    setUser(response.data)
+                }).catch((err) => {
+                    throw new Error(err);
+                })
         };
         fetchData();
     }, [id]);
 
     if (!userId) {
         return (
-            <div>
+            <AskConnection>
                 <h1>Veuillez vous connecter ou créer un compte pour accéder à cette page</h1>
                 <Link to="/signin"><Button>Se Connecter</Button></Link>
                 <Link to="/signin"><Button>S'inscrire</Button></Link>
-            </div>
+            </AskConnection>
         )
     }
 
@@ -51,4 +52,18 @@ const Button = styled.button`
   text-decoration: none;
   font-size: 16px;
   padding: 15px 32px;
+  &:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #5499c7;
+  }
+`;
+
+const AskConnection = styled.div`
+  width: fit-content;
+  margin: auto;
+    & > h1 {
+      text-align: center;
+      color: #5499c7;
+    }
 `;

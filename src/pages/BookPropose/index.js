@@ -9,7 +9,8 @@ const BookPropose = () => {
   const [author, setAuthor] = React.useState("");
   const [genre, setGenre] = React.useState("");
   const [year, setYear] = React.useState("");
-  const [resume, setResume]= React.useState("");
+  const [resume, setResume] = React.useState("");
+  const [image, setImage] = React.useState("");
   const userId = localStorage.getItem("userId");
 
   const handleTitleChange = (event) => {
@@ -28,6 +29,10 @@ const BookPropose = () => {
       setResume(event.target.value)
   }
 
+  const handleImageChange = (event) => {
+      setImage(event.target.value)
+  }
+
   const HandleSubmit = (event) => {
     event.preventDefault();
 
@@ -37,6 +42,7 @@ const BookPropose = () => {
             genre,
             year,
             resume,
+            image,
           }).then((response) => {
               alert(response.data)
           }).catch((error) => {
@@ -46,11 +52,11 @@ const BookPropose = () => {
 
     if (!userId) {
         return (
-            <div>
+            <AskConnection>
                 <h1>Veuillez vous connecter ou créer un compte pour accéder à cette page</h1>
                 <Link to="/signin"><Button>Se Connecter</Button></Link>
                 <Link to="/signin"><Button>S'inscrire</Button></Link>
-            </div>
+            </AskConnection>
         )
     }
 
@@ -73,6 +79,9 @@ const BookPropose = () => {
             <Label>
                 Resumé <Textarea onChange={handleResumeChange}/>
             </Label>
+              <Label>
+                  Image <Input type="url" onChange={handleImageChange}/>
+              </Label>
             <Button type="submit">Ajouter</Button>
           </Form>
         </Container>
@@ -134,4 +143,18 @@ const Button = styled.button`
   text-decoration: none;
   font-size: 16px;
   padding: 15px 32px;
+  &:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #5499c7;
+  }
+`;
+
+const AskConnection = styled.div`
+  width: fit-content;
+  margin: auto;
+    & > h1 {
+      text-align: center;
+      color: #5499c7;
+    }
 `;

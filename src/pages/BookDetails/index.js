@@ -10,12 +10,12 @@ const BookDetails = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const resp = await axios.get(`http://localhost:3030/books/${id}`)
-                setBook(resp.data);
-            } catch (err) {
-                throw new Error(err);
-            }
+            await axios.get(`http://localhost:3030/books/${id}`)
+                .then((response) => {
+                    setBook(response.data);
+            }).catch((error) => {
+                throw new Error(error);
+            })
         };
         fetchData()
     }, [id]);
@@ -23,11 +23,12 @@ const BookDetails = () => {
     return (
         <Container>
             {
-                book.map(({id, title, author, genre, year, resume}) => {
-                    return <BookDetail id={id} title={title} author={author} genre={genre} year={year} resume={resume}/>;
+                book.map(({id, title, author, genre, year, resume, image}) => {
+                    return <BookDetail id={id} title={title} author={author} genre={genre} year={year} resume={resume} img={image}/>;
                 })
             }
         </Container>
+
     )
 }
 export default BookDetails;

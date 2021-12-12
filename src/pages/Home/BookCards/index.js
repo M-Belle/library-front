@@ -7,22 +7,22 @@ const BookCards = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        const fetchData = async ()=> {
-            try{
-                const resp = await axios.get('http://localhost:3030/books');
-                setData(resp.data);
-            }catch(err) {
-                throw new Error(err);
-            }
+        const fetchData = async () => {
+            await axios.get('http://localhost:3030/books')
+                .then((response) => {
+                    setData(response.data);
+                }).catch((err) => {
+                    throw new Error(err);
+                })
         };
-        fetchData()
-    },[]);
+        fetchData();
+    }, []);
 
     return (
         <Container>
             {
-                data.map(({id, title, author, genre,year }) => {
-                    return <BookItem id={id} title={title} author={author} genre={genre} year={year} />;
+                data.map(({id, title, author, genre,year, image }) => {
+                    return <BookItem id={id} title={title} author={author} genre={genre} year={year} img={image}/>;
                 })
             }
         </Container>
